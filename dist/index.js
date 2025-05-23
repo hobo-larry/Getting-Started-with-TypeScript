@@ -33,4 +33,20 @@ let ride = {
 let value = 'a';
 if (typeof value === 'string')
     console.log(value.toUpperCase());
+class Account {
+    constructor(id, name, balance) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+    deposit(amount) {
+        if (amount <= 0)
+            throw new Error("bad balance");
+        this.balance += amount;
+    }
+}
+let account = new Account(1, "mosh", 0);
+console.log(account);
+account.deposit(10);
+console.log(account);
 //# sourceMappingURL=index.js.map

@@ -206,8 +206,8 @@ type DayOfTheWeek = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday"
 // let x = foo !== null && foo !== undefined ? foo : bar();
 
 
-console.log(user?.address?.street);
-let x = foo ?? bar();
+// console.log(user?.address?.street);
+// let x = foo ?? bar();
 
 
 //What is the problem in this piece of code?
@@ -218,3 +218,27 @@ let x = foo ?? bar();
 let value: unknown = 'a';
 if (typeof value === 'string')
 console.log(value.toUpperCase()); //have to narrow down to a specific type before doing any operations on it
+
+
+
+class Account {
+    id: number;
+    name: string;
+    balance: number;
+    constructor(id:number, name:string, balance:number){
+        this.id = id;
+        this.name = name;
+        this.balance = balance
+    }
+    deposit(amount:number):void{
+        if (amount <= 0)
+            throw new Error("bad balance");
+        this.balance += amount
+            
+    }
+
+}
+let account = new Account(1,"mosh",0)
+console.log(account);
+account.deposit(10)
+console.log(account);
