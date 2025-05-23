@@ -18,7 +18,7 @@ let arr2: number[] = [1, 2, 3, 4] //expects only numbers in the arr
 
 //tuples in ts
 
-let arr3:[number, string]=[1,"2"] // this is a tuple and it expects a number and a string only, cant add a third 
+let arr3:[number, string]=[1,"2"] // this is a tuple and it expects a number and a string only, cant add a third
 
 
 
@@ -54,15 +54,167 @@ calculateTax(10_000, 2022)
 
 //objects
 
-let employee:{
-    readonly id:number,// with the read only i cant change this value later on like (employee.id=2)
-    name:string,
-    retire: (date:Date) => void
-} = {
-    id:1, 
-    name:"john",
-    retire: (date:Date)=>{
-        return console.log(date);
-        
-    }
+// let employee:{
+//     readonly id:number,// with the read only i cant change this value later on like (employee.id=2)
+//     name:string,
+//     retire: (date:Date) => void
+// } = {
+//     id:1,
+//     name:"john",
+//     retire: (date:Date)=>{
+//         return console.log(date);
+
+//     }
+// }
+
+
+
+//type aliases
+// type Employee={
+//      readonly id:number,
+//     name:string,
+//     retire: (date:Date) => void
+
+// }
+// let employee: Employee ={
+//     id:1,
+//     name:"john",
+//     retire: (date:Date)=>{
+//         return console.log(date);
+// }}
+
+
+
+//union types
+
+// function kgToLbs(weight: number | string): number{
+//     //Narrowing
+//     if(typeof weight === "number" )
+//         weight * 2.2
+
+//     else
+//     return parseInt(weight) * 2.2
+// return weight
+
+
+// }
+
+// kgToLbs(10)
+// kgToLbs("10")
+
+
+//intersection types
+
+
+// type Draggable ={
+//     drag:()=> void
+// }
+// type Resizable ={
+//     resize: ()=> void
+// }
+
+// type UiWidget = Draggable & Resizable ;
+
+// let textBox: UiWidget={
+//     drag:() =>{
+
+//     },
+//     resize:() =>{
+
+//     },
+// }
+
+
+//literal types
+
+// type Quantity =100 | 50 // can only be 100 or 50
+// let num: Quantity= 50 //added it here
+
+// type Metric = "cm" | "m"; //same applies for strings
+
+
+//Nullable types
+// function greet(name:string | null| undefined){
+//     if(name)
+//         console.log(name.toUpperCase());
+//     else
+//         console.log("hola");
+
+// }
+// greet(null)//to pass null or undefined, we either add turn off the setting on tsconfig, or pass it up there in the parameters
+
+
+//Optional chaining
+
+type Customer ={
+    birthday?:Date //optional because of the  ?
 }
+
+function getCustomer(id:number):Customer | null | undefined{
+    return id === 0 ? null : {birthday:new Date()};
+
+}
+let customer = getCustomer(0)
+// if (customer !== null && customer !== undefined) //this can be avoided with just (?.) also known as Optional property access operator
+    console.log(customer?.birthday?.getFullYear());//so this piece of code only gets executes if we have a customer that is not null or undefined, no need to use ifs
+
+
+
+    //optional element access operator
+
+    //customer?.[0]
+
+    //optional call
+    // let log: any = null;
+    // log?.("a")
+
+
+
+    //nullish coaelsching operator
+    let speed: number | null = null;
+    let ride ={
+        speed: speed ?? 30 //if speed is not null or undefined, use that value, else use 30
+    }
+
+
+
+//EXERCISES
+
+    // Birds fly. Fish swim. A Pet can be a Bird or Fish. Use type aliases to represent these
+
+    type Bird ={
+        fly: ()=> void
+    }
+    type Fish ={
+        swim: ()=> void
+    }
+
+    type Pet = Bird & Fish;
+
+
+        
+//Define a type for representing the days of week. Valid values are “Monday”, “Tuesday”, etc
+
+type DayOfTheWeek = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday"
+
+
+
+// Simplify the following code snippets:
+
+// let user = getUser();
+// console.log(user && user.address ? user.address.street : undefined);
+// let x = foo !== null && foo !== undefined ? foo : bar();
+
+
+console.log(user?.address?.street);
+let x = foo ?? bar();
+
+
+//What is the problem in this piece of code?
+
+//let value: unknown = 'a';
+// console.log(value.toUpperCase());
+
+let value: unknown = 'a';
+if (typeof value === 'string')
+console.log(value.toUpperCase()); //have to narrow down to a specific type before doing any operations on it
