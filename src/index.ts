@@ -513,3 +513,94 @@ salary: number;
 address: Address;
 }
 
+
+
+//Generics class
+
+
+//this is a normal class
+// class KeyValueType{
+//     constructor(public key:number, public name: string){}
+// }
+
+// let getKey = new KeyValueType(1,"2")
+
+
+//Generics applied, so i can reuse this easy
+class KeyValueType<T, C>{ //can add 1 or more 
+    constructor(public key:T, public name: C){}
+}
+
+let getKey = new KeyValueType<number, string>(1,"name")
+let getKeystring = new KeyValueType<string, number>("2", 2)
+
+
+
+
+//Generic function
+
+
+// function wrapInArray(value:number){
+//     return value
+
+// }
+
+// let wrappedArr = wrapInArray(1)
+
+
+
+function wrapInArray<V>(value: V){
+    return value
+
+}
+
+let wrappedArr = wrapInArray<number>(1) //same rules applies here
+
+
+
+//Generics constraints
+
+function wrapInArray2<V extends number | string >(value: V){// (extends number | string ) means it can only accept string or numbers, nothing else
+    return value
+
+}
+
+let wrappedArr2 = wrapInArray2<number>(1) //same rules applies here
+
+
+//EXERCISES
+
+// Convert the function below to a generic function:
+// function echo(arg) { return arg; }
+function echo<T>(arg:T) { return arg; }
+
+
+//When compiling the following piece of code, we get an error saying ‘Property name 
+//does not exist on type T’. How can we solve this problem?
+// function printName<T>(obj: T) {
+// console.log(obj.name);
+// }
+
+function printName<T extends {name:string}>(obj: T) {
+console.log( obj.name);
+}
+
+
+//An Entity should have a unique identifier. The type of identifier, however, is dependent
+//on the use case. In some cases, the ID might be a number, in other cases, it might be a
+//string, GUID, etc. Represent the entity using a generic class
+
+class Entity<T extends number | string>{
+    constructor(public id:T){}
+}
+
+
+
+//Given the following interface, what does keyof User return?
+
+interface User {
+userId: number;
+username: string;
+}
+
+//it returns a union of the properties of User: ‘userId’ | ‘username’

@@ -150,4 +150,29 @@ let employee = {
         zipCode: 3144,
     },
 };
+class KeyValueType {
+    constructor(key, name) {
+        this.key = key;
+        this.name = name;
+    }
+}
+let getKey = new KeyValueType(1, "name");
+let getKeystring = new KeyValueType("2", 2);
+function wrapInArray(value) {
+    return value;
+}
+let wrappedArr = wrapInArray(1);
+function wrapInArray2(value) {
+    return value;
+}
+let wrappedArr2 = wrapInArray2(1);
+function echo(arg) { return arg; }
+function printName(obj) {
+    console.log(obj.name);
+}
+class Entity {
+    constructor(id) {
+        this.id = id;
+    }
+}
 //# sourceMappingURL=index.js.map
