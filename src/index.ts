@@ -1,27 +1,32 @@
-let sales = 123_456_789;
-let course = "TypeScript";
-let is_published = true;
-let something; //type any, can be number bool or string(not recommended)
+import { Square, Circle } from "./shapes";
 
-function handleSomething(document: any) {
-  //not recommended
-  console.log(document);
-}
+
+
+
+// let sales = 123_456_789;
+// let course = "TypeScript";
+// let is_published = true;
+// let something; //type any, can be number bool or string(not recommended)
+
+// function handleSomething(document: any) {
+//   //not recommended
+//   console.log(document);
+// }
 // https://www.typescriptlang.org/tsconfig/#strict
 
-let arr = [1, 2, 3, "2"]; //this is a normal arr in js so its ok but if i want only num arr or string arr i should declare
-let arr2: number[] = [1, 2, 3, 4]; //expects only numbers in the arr
+// let arr = [1, 2, 3, "2"]; //this is a normal arr in js so its ok but if i want only num arr or string arr i should declare
+// let arr2: number[] = [1, 2, 3, 4]; //expects only numbers in the arr
 
 //tuples in ts
 
-let arr3: [number, string] = [1, "2"]; // this is a tuple and it expects a number and a string only, cant add a third
+// let arr3: [number, string] = [1, "2"]; // this is a tuple and it expects a number and a string only, cant add a third
 
 /////////
 
 //enums
-const small = 10;
-const medium = 15;
-const large = 20;
+// const small = 10;
+// const medium = 15;
+// const large = 20;
 
 //PasccalCase
 const enum Size {
@@ -148,27 +153,27 @@ console.log(customer?.birthday?.getFullYear()); //so this piece of code only get
 // log?.("a")
 
 //nullish coaelsching operator
-let speed: number | null = null;
-let ride = {
-  speed: speed ?? 30, //if speed is not null or undefined, use that value, else use 30
-};
+// let speed: number | null = null;
+// let ride = {
+//   speed: speed ?? 30, //if speed is not null or undefined, use that value, else use 30
+// };
 
 //EXERCISES
 
 // Birds fly. Fish swim. A Pet can be a Bird or Fish. Use type aliases to represent these
 
-type Bird = {
-  fly: () => void;
-};
-type Fish = {
-  swim: () => void;
-};
+// type Bird = {
+//   fly: () => void;
+// };
+// type Fish = {
+//   swim: () => void;
+// };
 
-type Pet = Bird & Fish;
+// type Pet = Bird & Fish;
+
 
 //Define a type for representing the days of week. Valid values are “Monday”, “Tuesday”, etc
-
-type DayOfTheWeek = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday";
+// type DayOfTheWeek = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday";
 
 // Simplify the following code snippets:
 
@@ -279,7 +284,7 @@ class Student extends Person {
     console.log("taking test...");
   }
 }
-let student = new Student(1, "john", "wick");
+// let student = new Student(1, "john", "wick");
 
 // console.log(student.fullName);
 
@@ -291,8 +296,8 @@ class Teacher extends Person {
     return "Professor " + super.fullName; //or `Professor ${this.firstName} ${this.lastName} ` same thing
   }
 }
-let teacher = new Teacher("Mosh", "simpson");
-// console.log(teacher.fullName);
+// let teacher = new Teacher("Mosh", "simpson");
+// // console.log(teacher.fullName);
 
 //polymorphism
 //with polymorphism classes should be open for extension but closed for modification - called open closed principal
@@ -337,29 +342,29 @@ function printNames(people: Person[]) {
 //     abstract removeEvent():void
 // } since this is just declaring and its not doing anything its better to use interface, example bellow
 
-interface Calendar {
-  //code is shorter and it doesnt appear in normal js, way cleaner
-  name: string;
-  addEvent(): void;
-  removeEvent(): void;
-}
+// interface Calendar {
+//   //code is shorter and it doesnt appear in normal js, way cleaner
+//   name: string;
+//   addEvent(): void;
+//   removeEvent(): void;
+// }
 
 //only use interfqace if it doesnt have any logic or value in it
 
-interface CloudCalender extends Calendar {
-  sync(): void;
-}
+// interface CloudCalender extends Calendar {
+//   sync(): void;
+// }
 
-class GoogleCalendar implements Calendar {
-  //instead of extend we use implements, to get the things from interfaces
-  constructor(public name: string) {}
-  addEvent(): void {
-    throw new Error("Method not implemented.");
-  }
-  removeEvent(): void {
-    throw new Error("Method not implemented.");
-  }
-}
+// class GoogleCalendar implements Calendar {
+//   //instead of extend we use implements, to get the things from interfaces
+//   constructor(public name: string) {}
+//   addEvent(): void {
+//     throw new Error("Method not implemented.");
+//   }
+//   removeEvent(): void {
+//     throw new Error("Method not implemented.");
+//   }
+// }
 
 // type Calendar2={
 //     name: string;
@@ -378,46 +383,46 @@ class GoogleCalendar implements Calendar {
 
 //Given the Person class below, create a getter for getting the full name of a person
 
-class ExPerson {
-  constructor(public firstName: string, public lastName: string) {}
-  get fullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
-}
+// class ExPerson {
+//   constructor(public firstName: string, public lastName: string) {}
+//   get fullName() {
+//     return `${this.firstName} ${this.lastName}`;
+//   }
+// }
 
 //create a new class called Employee that extends Person and adds a new property called salary.
 
-class Employee extends Person {
-  constructor(public salary: number, firstName: string, lastName: string) {
-    super(firstName, lastName);
-  }
-}
+// class Employee extends Person {
+//   constructor(public salary: number, firstName: string, lastName: string) {
+//     super(firstName, lastName);
+//   }
+// }
 
 //What is the difference between private and protected members?
 //answer: protected can be inherited while private cant
 
 //Given the data below, define an interface for representing employees:
 
-let employee = {
-  name: "John Smith",
-  salary: 50_000,
-  address: {
-    street: "Flinders st",
-    city: "Melbourne",
-    zipCode: 3144,
-  },
-};
+// let employee = {
+//   name: "John Smith",
+//   salary: 50_000,
+//   address: {
+//     street: "Flinders st",
+//     city: "Melbourne",
+//     zipCode: 3144,
+//   },
+// };
 
-interface Address {
-  street: string;
-  city: string;
-  zipCode: number;
-}
-interface Employee {
-  name: string;
-  salary: number;
-  address: Address;
-}
+// interface Address {
+//   street: string;
+//   city: string;
+//   zipCode: number;
+// }
+// interface Employee {
+//   name: string;
+//   salary: number;
+//   address: Address;
+// }
 
 //Generics class
 
@@ -429,13 +434,13 @@ interface Employee {
 // let getKey = new KeyValueType(1,"2")
 
 //Generics applied, so i can reuse this easy
-class KeyValueType<T, C> {
-  //can add 1 or more
-  constructor(public key: T, public name: C) {}
-}
+// class KeyValueType<T, C> {
+//   //can add 1 or more
+//   constructor(public key: T, public name: C) {}
+// }
 
-let getKey = new KeyValueType<number, string>(1, "name");
-let getKeystring = new KeyValueType<string, number>("2", 2);
+// let getKey = new KeyValueType<number, string>(1, "name");
+// let getKeystring = new KeyValueType<string, number>("2", 2);
 
 //Generic function
 
@@ -446,28 +451,28 @@ let getKeystring = new KeyValueType<string, number>("2", 2);
 
 // let wrappedArr = wrapInArray(1)
 
-function wrapInArray<V>(value: V) {
-  return value;
-}
+// function wrapInArray<V>(value: V) {
+//   return value;
+// }
 
-let wrappedArr = wrapInArray<number>(1); //same rules applies here
+// let wrappedArr = wrapInArray<number>(1); //same rules applies here
 
 //Generics constraints
 
-function wrapInArray2<V extends number | string>(value: V) {
-  // (extends number | string ) means it can only accept string or numbers, nothing else
-  return value;
-}
+// function wrapInArray2<V extends number | string>(value: V) {
+//   // (extends number | string ) means it can only accept string or numbers, nothing else
+//   return value;
+// }
 
-let wrappedArr2 = wrapInArray2<number>(1); //same rules applies here
+// let wrappedArr2 = wrapInArray2<number>(1); //same rules applies here
 
 //EXERCISES
 
 // Convert the function below to a generic function:
 // function echo(arg) { return arg; }
-function echo<T>(arg: T) {
-  return arg;
-}
+// function echo<T>(arg: T) {
+//   return arg;
+// }
 
 //When compiling the following piece of code, we get an error saying ‘Property name
 //does not exist on type T’. How can we solve this problem?
@@ -475,24 +480,24 @@ function echo<T>(arg: T) {
 // console.log(obj.name);
 // }
 
-function printName<T extends { name: string }>(obj: T) {
-  console.log(obj.name);
-}
+// function printName<T extends { name: string }>(obj: T) {
+//   console.log(obj.name);
+// }
 
 //An Entity should have a unique identifier. The type of identifier, however, is dependent
 //on the use case. In some cases, the ID might be a number, in other cases, it might be a
 //string, GUID, etc. Represent the entity using a generic class
 
-class Entity<T extends number | string> {
-  constructor(public id: T) {}
-}
+// class Entity<T extends number | string> {
+//   constructor(public id: T) {}
+// }
 
 //Given the following interface, what does keyof User return?
 
-interface User {
-  userId: number;
-  username: string;
-}
+// interface User {
+//   userId: number;
+//   username: string;
+// }
 
 //it returns a union of the properties of User: ‘userId’ | ‘username’
 
@@ -500,15 +505,15 @@ interface User {
 
 
 //clss decorators
-function Component(constructor: Function) {
-  console.log("component decorator called");
-  constructor.prototype.uniqueId = Date.now();
-  constructor.prototype.insertInDom = () =>
-    console.log("inserting the component in the dom");
-}
+// function Component(constructor: Function) {
+//   console.log("component decorator called");
+//   constructor.prototype.uniqueId = Date.now();
+//   constructor.prototype.insertInDom = () =>
+//     console.log("inserting the component in the dom");
+// }
 
-@Component
-class ProfileComponent {}
+// @Component
+// class ProfileComponent {}
 
 
 
@@ -520,13 +525,30 @@ class ProfileComponent {}
 //@Sauce('pesto')
 //class Pizza 5j5t
 
-function Sauce(sauce:string){
-  return (constructor:Function)=>{
-    constructor.prototype.sauce = sauce
+// function Sauce(sauce:string){
+//   return (constructor:Function)=>{
+//     constructor.prototype.sauce = sauce
 
-  }
+//   }
 
-}
+// }
 
-@Sauce('pesto')
-class Pizza {}
+// @Sauce('pesto')
+// class Pizza {}
+
+
+
+
+
+
+//Modules
+
+
+let circle = new Circle(1)
+console.log(circle);
+
+let square = new Square(2)
+console.log(square);
+
+
+
