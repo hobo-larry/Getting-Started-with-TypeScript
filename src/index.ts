@@ -509,3 +509,24 @@ function Component(constructor: Function) {
 
 @Component
 class ProfileComponent {}
+
+
+
+
+
+//exercises 
+
+//Create a decorator for adding a sauce to Pizza instances:
+//@Sauce('pesto')
+//class Pizza 5j5t
+
+function Sauce(sauce:string){
+  return (constructor:Function)=>{
+    constructor.prototype.sauce = sauce
+
+  }
+
+}
+
+@Sauce('pesto')
+class Pizza {}
