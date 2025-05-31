@@ -2,6 +2,9 @@
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const shapes_1 = require("./shapes");
+const tax_1 = require("./tax");
+let income = (0, tax_1.calculateTax2)(1000);
+console.log(income);
 let mySize = 2;
 console.log(mySize);
 function calculateTax(income, taxYear) {

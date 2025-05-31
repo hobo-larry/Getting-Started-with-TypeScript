@@ -1,5 +1,10 @@
 import { Square, Circle } from "./shapes";
+import {calculateTax2} from "./tax"
+import * as _ from "lodash"
 
+ let income = calculateTax2(10_000)
+ console.log(income);
+ 
 
 
 
@@ -33,7 +38,7 @@ const enum Size {
   Small = 1,
   Medium,
   Marge,
-} //by default it sets the small to 1 and increase the rest by 1. I can change the first vakue to any value and it increases the the rest. If i want to add like a string to it example (s, m , l) for sizes i would have to explicitly declare it like small="s"
+} //by default it sets the small to 1 and increase the rest by 1. I can change the first value to any value and it increases the the rest. If i want to add like a string to it example (s, m , l) for sizes i would have to explicitly declare it like small="s"
 let mySize: Size = Size.Medium;
 console.log(mySize); // this prints number 2 because Small is 1 and it gets increased by 1 like i said above by the compiler
 //////////
